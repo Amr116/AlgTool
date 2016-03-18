@@ -1,1 +1,1 @@
-jave scirpt files will be store here
+javascript files will be store here
