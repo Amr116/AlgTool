@@ -34,21 +34,21 @@
       body {
         padding: 30px;
       }
-    	.col-sm-12{
+    	.col-lg-12{
     		height: 50px;
     		background: rgb(200,200,200) ;
     		color: black;
     		text-align: center;
      		border: 2px solid black;   		
     	}
-     	.col-sm-6{
+     	.col-lg-6{
     		height: 800px;
     		background: #e1e1ea ;
     		color: black;
     		text-align: left;
      		border: 2px solid black;   		
     	}   	
-      .col-sm-4{
+      .col-lg-4{
         height: 800px;
         background: #e6e6ff ;
         color: black;
@@ -56,7 +56,7 @@
         border: 2px solid black;
       }     
 
-     	.col-sm-3{
+     	.col-lg-3{
     		height: 800px;
     		background: #e6e6ff ;
     		color: black;
@@ -70,19 +70,26 @@
       .down-container{
         padding-top: 10px;
       }
-      #my-textarea{
+      .mytextarea{
       	overflow-y: scroll;
-      	
-      	border:4px double #DEBB07;
       	resize: none;
       }
+      .cluster{
+/*    		border: 2px solid black; */
+      }
+      .custom{
+    	width: 67px !important;
+	  }
     </style>
   </head>
 
   <body>
 
   <div class="container-fluid">
-<!-- <div class="row topbar"><div class="col-sm-12"></div></div> -->
+	<div class="row topbar">
+		<div class="col-lg-12">
+		</div>
+	</div>
       <button class="btn btn-primary active" type="submit">Button</button>
       <button class="btn btn-primary active" type="submit">Button</button>
       <button class="btn btn-primary active" type="submit">Button</button>
@@ -98,7 +105,8 @@
         		
   	
   	<div class="row down-container">
-		<div class="col-sm-3">
+
+		<div class="col-lg-3">
         	<div class="descripe-text">
         		Blocks Container<br>
         		Insert to Algorithm<br>
@@ -107,16 +115,38 @@
         		For loop<br>
         		osv.
         	</div>
-      	</div>  <!--		
-		<div class="col-sm-6" id="pseudocode">
-        	<div class="descripe-text" >Pseudocode Container</div>
-      	</div> -->  
-      	<textarea class="col-sm-6" id="my-textarea" >
-      		
-      	</textarea>		
-		<div class="col-sm-3">
+        	<div class="row cluster">
+        		<button class="btn btn-primary active custom" type="submit">FOR</button>
+        		<button class="btn btn-primary active custom" type="submit">WHILE</button>
+        		<button class="btn btn-primary active custom" type="submit">DO</button>
+        		<button class="btn btn-primary active custom" type="submit">Button</button>
+        		<button class="btn btn-primary active custom" type="submit">Button</button>
+        		<button class="btn btn-primary active custom" type="submit">Button</button>
+
+        		<button class="btn btn-primary active" type="submit">Button</button>
+        		<button class="btn btn-primary active" type="submit">Button</button>
+        		<button class="btn btn-primary active" type="submit">Button</button>
+        		<button class="btn btn-primary active" type="submit">Button</button>
+        		<button class="btn btn-primary active" type="submit">Button</button>
+        		<button class="btn btn-primary active" type="submit">Button</button>
+
+        		<button class="btn btn-primary active" type="submit">Button</button>
+        		<button class="btn btn-primary active" type="submit">Button</button>
+        		<button class="btn btn-primary active" type="submit">Button</button>
+        		<button class="btn btn-primary active" type="submit">Button</button>
+        		<button class="btn btn-primary active" type="submit">Button</button>
+        		<button class="btn btn-primary active" type="submit">Button</button>
+       
+        	</div>
+      	</div>  
+
+      	<textarea class="col-lg-6 mytextarea"  id="my-textarea" placeholder="Pseudocode Container">	
+      	</textarea>
+      			
+		<div class="col-lg-3">
         	<div class="descripe-text"> Variables Log Container</div>
-      	</div>  		
+      	</div>
+
   	</div>
 
   </div>
