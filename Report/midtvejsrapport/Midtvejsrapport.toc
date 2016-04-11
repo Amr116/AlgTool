@@ -1,0 +1,17 @@
+\select@language {american}
+\contentsline {part}{I\hspace {1em}Introduction}{4}{part.1}
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}
+\contentsline {subsection}{\numberline {1.1}About the Project}{4}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Problem definition}{4}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Scope}{4}{subsection.1.3}
+\contentsline {section}{\numberline {2}Problem Analysis}{4}{section.2}
+\contentsline {part}{II\hspace {1em}Design}{5}{part.2}
+\contentsline {section}{\numberline {3}Design}{5}{section.3}
+\contentsline {section}{\numberline {4}Inspiration}{6}{section.4}
+\contentsline {part}{III\hspace {1em}Implementation}{6}{part.3}
+\contentsline {section}{\numberline {5}Implementation}{6}{section.5}
+\contentsline {subsection}{\numberline {5.1}UI}{6}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Building Block Grammar}{7}{subsection.5.2}
+\contentsline {section}{\numberline {6}Work progress}{9}{section.6}
+\contentsline {subsection}{\numberline {6.1}Time schedule}{9}{subsection.6.1}
+\contentsline {section}{References}{10}{subsection.6.1}
