@@ -1,6 +1,6 @@
-from webserver.Options import Options
-from webserver.filesystem.Filesystem import Filesystem
-from webserver.protocol.Response import Response
+from Options import Options
+from filesystem.Filesystem import Filesystem
+from protocol.Response import Response
 
 
 class HttpRequest:

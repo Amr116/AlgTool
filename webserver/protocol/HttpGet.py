@@ -1,9 +1,9 @@
 import os
 
-from webserver.Options import Options
-from webserver.filesystem.Filesystem import Filesystem
-from webserver.protocol.Response import Response
-from webserver.protocol.HttpRequest import HttpRequest
+from Options import Options
+from filesystem.Filesystem import Filesystem
+from protocol.Response import Response
+from protocol.HttpRequest import HttpRequest
 
 
 class HttpGet(HttpRequest):
@@ -15,8 +15,8 @@ class HttpGet(HttpRequest):
 	"""
 	filename = match.split("/")[-1]
 	filepath = match.replace(filename,"")
-	print(filename)
-	print(filepath)
+	print("File name : "+filename)
+	print("File path : "+filepath)
 
 	if filepath is not None and (filepath is "/uge1" or filepath is "/uge2" or filepath is "/uge3" or filepath is "/uge4" or filepath is "/uge5"):
 	    filepath = "assignments"+filepath
@@ -35,5 +35,5 @@ class HttpGet(HttpRequest):
             self.serve_file(filepath, filename, csock)
 	# if there is no index.html file, so we serve Not Found error message
         else:  
-	    Response.reply_404(csock)
+	        Response.reply_404(csock)
 

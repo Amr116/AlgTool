@@ -1,6 +1,6 @@
 import socket
 import re
-from webserver.protocol.HttpGet import HttpGet
+from protocol.HttpGet import HttpGet
 
 CRLF = '\r\n'
 class HttpServer:
