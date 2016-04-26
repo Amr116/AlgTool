@@ -2,10 +2,11 @@ import socket
 import re
 from protocol.HttpGet import HttpGet
 from protocol.Response import Response
-
+import os
 CRLF = '\r\n'
-class HttpServer:
 
+
+class HttpServer:
     host = None
     port = None
     sock = None
@@ -19,7 +20,7 @@ class HttpServer:
 
     def start_server(self):
         while True:
-	    # csock : is the client request object
+            # csock : is the client request object
             # caddr : is a tuple of the client HOST and PORT
             csock, caddr = self.sock.accept()
             self.handle_request(csock)
@@ -27,9 +28,10 @@ class HttpServer:
     def handle_request(self, csock):
         request = csock.recv(8192)  # returns request headers. (no more than 8kb)
 
-#        match = re.match("(\w+)\s(?:/|(.*)(/[\w\d]+\.html?))\sHTTP/1", request)
-        first_line = request.split(CRLF, 1)[0]
-	print("==============================")
+        #        match = re.match("(\w+)\s(?:/|(.*)(/[\w\d]+\.html?))\sHTTP/1", request)
+        first_line = (request.split(CRLF, 1)[0])
+
+        print("==============================")
         print(first_line)
         if len(first_line) > 0:
             fl_split = first_line.split()
@@ -39,13 +41,12 @@ class HttpServer:
         else:
             print("We reach herei ...!\nSomething weird happened..!")
             exit()
-            
-        #method, uri, protocol = first_line.split()
 
-        #print(uri)
+            # method, uri, protocol = first_line.split()
+
+            # print(uri)
         if method == "GET":
             HttpGet(uri, csock)
         elif method == "POST":
             print("We did not implement POST yet")
             return
-
