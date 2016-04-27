@@ -26,10 +26,9 @@ class HttpServer:
 
     def handle_request(self, csock):
         request = csock.recv(8192)  # returns request headers. (no more than 8kb)
-
-#        match = re.match("(\w+)\s(?:/|(.*)(/[\w\d]+\.html?))\sHTTP/1", request)
+        #        match = re.match("(\w+)\s(?:/|(.*)(/[\w\d]+\.html?))\sHTTP/1", request)
         first_line = request.split(CRLF, 1)[0]
-	print("==============================")
+        print("==============================")
         print(first_line)
         if len(first_line) > 0:
             fl_split = first_line.split()

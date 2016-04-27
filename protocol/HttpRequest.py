@@ -8,6 +8,8 @@ class HttpRequest:
     def serve_file(self, filepath, filename, csock):
         exists = Filesystem.file_exists(filepath, filename)
         if exists:
+            # remember to call BbManager to gernerate the blocks inside index.html file
+            # before serving
             with open(Options.root_dir + filepath + filename, 'r') as fhandle:
                 Response.reply_200(csock, fhandle.read())
         else:
