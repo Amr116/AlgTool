@@ -5,10 +5,10 @@ class Response:
 
     @staticmethod
     def reply_200(csock, content):
-        csock.sendall("""HTTP/1.1 200 OK
+        csock.sendall(("""HTTP/1.1 200 OK
                          Content-Type: text/html
                          Content-Length: """ + str(len(content)) + """
-                         \n\n""" + content + """\r\n""")
+                         \n\n""" + content + """\r\n""").encode())
         csock.close()
 
     @staticmethod
@@ -18,8 +18,8 @@ class Response:
       """
       with open(Options.root_dir + "/standardResponse/404.html", 'r') as fhandle:
           content = fhandle.read()
-      csock.sendall("""HTTP/1.1 404 Not Found
+      csock.sendall(("""HTTP/1.1 404 Not Found
                        Content-Type: text/html
                        Content-Length: """ + str(len(content)) + """
-                       \n\n""" + content + """\r\n""")
+                       \n\n""" + content + """\r\n""").encode())
       csock.close()
