@@ -1,5 +1,4 @@
 import os, os.path
-from importlib.machinery import SourceFileLoader
 import importlib
 import sys
 from Options import Options
@@ -20,13 +19,14 @@ class BbManager:
             for sysfile in files:
                 if sysfile.endswith(".py"):
                     path = os.path.join(filepath,sysfile)
-                    path = path.replace("/",".")
-                    path = path[:-3]
-                    print("path: \n"+ path)
-                    foo = __import__(path)
-                    x = (eval("foo." + "uge1" + ".test"))
-                    print(x)
-                    print(x.test.show_in_menu())
+                    print(path)
+                    path = path.replace("/",".")[:-3]
+                    #path = path[:-3]
+#                    print("path: \n"+ path)
+#                    foo = __import__(path)
+#                    x = (eval("foo." + "uge1" + ".test"))
+#                    print(x)
+#                    print(x.test.show_in_menu())
                     #fl = sysfile
                     #foo = SourceFileLoader(str(fl), filepath+str(fl)).load_module()
                     #test = foo.test()
@@ -41,11 +41,13 @@ class BbManager:
 #                    print("FORLOOP\n"+ path)
 
 #                    print("YEs WE CAN")
-#                    sy= importlib.import_module(path)
-#                    print(sy)
+                    sy = importlib.import_module(path)
+                    print(sy)
+                    #print(sy.test.show_in_menu())
 #                    print("DONE")
 #                    print(sy.show_in_menu)
-#                    self.html_code.append(sy.show_in_menu)
+                    self.html_code.append(sy.test.show_in_menu())
+                    print(self.html_code)
 
 #        else:
 #            print("ELSE")
