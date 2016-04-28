@@ -69,9 +69,9 @@
         	</div>
         	-->
         	<div class="row cluster">
-        		<button class="btn btn-primary active custom" type="submit"z>FOR</button>
-        		<button class="btn btn-primary active custom" type="submit">WHILE</button>
-        		<button class="btn btn-primary active custom" type="submit">DO</button>
+        		<button onclick="insert('For')">For</button>
+        		<button onclick="insert('While')">While</button>
+        		<button onclick="insert('Next')">Next</button>
         		<button class="btn btn-primary active custom" type="submit">Button</button>
         		<button class="btn btn-primary active custom" type="submit">Button</button>
         		<button class="btn btn-primary active custom" type="submit">Button</button>
@@ -129,6 +129,13 @@
       	</div>
 
   	</div>
+    <script type = "text/javascript">
+    // from textBoxes.html
+    function insert(name){
+    var txtOutput = document.getElementById("my-textarea");
+    txtOutput.value += "Hi there, " + name + "!" + "\n"
+    } // end sayHi
+    </script>
 
   </div>
     <!-- Bootstrap core JavaScript
