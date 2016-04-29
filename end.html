@@ -39,10 +39,24 @@
 
   	</div>
     <script type = "text/javascript">
-    // from textBoxes.html
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var txtOutput = document.getElementById("my-textarea");
+        txtOutput.value += "Hi there, " + data + "!" + "\n"
+    }
+        // from textBoxes.html
     function insert(name){
-    var txtOutput = document.getElementById("my-textarea");
-    txtOutput.value += "Hi there, " + name + "!" + "\n"
+        var txtOutput = document.getElementById("my-textarea");
+        txtOutput.value += "Hi there, " + name + "!" + "\n"
     } // end sayHi
     </script>
 

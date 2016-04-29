@@ -60,9 +60,9 @@
 
 		<div class="col-lg-3">
         	<div class="row cluster">
-        		<button onclick="insert('For')" id="for" draggable="true" ondrop="dropinsert('id')">For</button>
-        		<button onclick="insert('While')">While</button>
-        		<button onclick="insert('Next')">Next</button>
+        		<button id="For" onclick="insert('For')" draggable="true" ondragstart="drag(event)">For</button>
+        		<button id="While" onclick="insert('While')" draggable="true" ondragstart="drag(event)">While</button>
+        		<button id="Next" onclick="insert('Next')" draggable="true" ondragstart="drag(event)">Next</button>
         		<button class="btn btn-primary active custom" type="submit">Button</button>
         		<button class="btn btn-primary active custom" type="submit">Button</button>
         		<button class="btn btn-primary active custom" type="submit">Button</button>
@@ -83,7 +83,7 @@
         	</div>
       	</div>  
 
-      	<textarea class="col-lg-6 mytextarea"  id="my-textarea" placeholder="Pseudocode Container" ondrop="dropinsert(event)" ondragover="allowDrop(event)">
+      	<textarea class="col-lg-6 mytextarea"  id="my-textarea" placeholder="Pseudocode Container" ondrop="drop(event)" ondragover="allowDrop(event)">
       	</textarea>
       			
 		<div class="col-lg-3">
@@ -93,28 +93,20 @@
   	</div>
         <!-- Drag and drop functions-->
   <script type = "text/javascript">
-  function allowDrop(ev) {
+      function allowDrop(ev) {
     ev.preventDefault();
-  }
+}
 
-  function drag(ev) {
+function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
+}
 
-  }
-
-  function drop(ev) {
+function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-
-  }
-   function dropinsert(event){
-       var id = event.dataTransfer.getData("text");
     var txtOutput = document.getElementById("my-textarea");
-    txtOutput.value += "Hi there, " + id + "!" + id + "\n";
-    }
-  </script>
-    <script type = "text/javascript">
+    txtOutput.value += "Hi there, " + data + "!" + "\n"
+}
     // from textBoxes.html
     function insert(name){
     var txtOutput = document.getElementById("my-textarea");

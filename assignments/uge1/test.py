@@ -8,7 +8,7 @@ class test:
 #        return "test1"
 
     def show_in_menu():
-        button = "Test"
+        button = """<button id="Test" onclick="insert('Test')" draggable="true" ondragstart="drag(event)">For</button>"""
         return button
     
 
