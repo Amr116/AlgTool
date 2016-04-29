@@ -33,7 +33,7 @@ class HttpServer:
 
         print("==============================")
         print(first_line)
-        if len(first_line) > 0:
+        if len(first_line) >= 0:
             fl_split = first_line.split()
             method = fl_split[0]
             uri = fl_split[1]
