@@ -69,7 +69,7 @@
         	</div>
         	-->
         	<div class="row cluster">
-        		<button onclick="insert('For')">For</button>
+        		<button onclick="insert('For')" id="for" draggable="true" ondrop="dropinsert('id')">For</button>
         		<button onclick="insert('While')">While</button>
         		<button onclick="insert('Next')">Next</button>
         		<button class="btn btn-primary active custom" type="submit">Button</button>
@@ -121,7 +121,7 @@
         	</div>
       	</div>  
 
-      	<textarea class="col-lg-6 mytextarea"  id="my-textarea" placeholder="Pseudocode Container">	
+      	<textarea class="col-lg-6 mytextarea"  id="my-textarea" placeholder="Pseudocode Container" ondrop="dropinsert(event)" ondragover="allowDrop(event)">
       	</textarea>
       			
 		<div class="col-lg-3">
@@ -129,6 +129,29 @@
       	</div>
 
   	</div>
+        <!-- Drag and drop functions-->
+  <script type = "text/javascript">
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+
+  }
+
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+
+  }
+   function dropinsert(event){
+       var id = event.dataTransfer.getData("text");
+    var txtOutput = document.getElementById("my-textarea");
+    txtOutput.value += "Hi there, " + id + "!" + id + "\n";
+    }
+  </script>
     <script type = "text/javascript">
     // from textBoxes.html
     function insert(name){
@@ -147,6 +170,8 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="staticMedia/js/ie10-viewport-bug-workaround.js"></script>
     <script type="text/javascript" src="staticMedia/js/config.js"></script>
+
+
   </body>
 </html>
 
