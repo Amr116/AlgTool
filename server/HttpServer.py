@@ -26,17 +26,11 @@ class HttpServer:
             self.handle_request(csock)
 
     def handle_request(self, csock):
-<<<<<<< HEAD
-        request = csock.recv(8192)  # returns request headers. (no more than 8kb)
-        #        match = re.match("(\w+)\s(?:/|(.*)(/[\w\d]+\.html?))\sHTTP/1", request)
-        first_line = request.split(CRLF, 1)[0]
-=======
         request = csock.recv(8192).decode()  # returns request headers. (no more than 8kb)
 
         #        match = re.match("(\w+)\s(?:/|(.*)(/[\w\d]+\.html?))\sHTTP/1", request)
         first_line = (request.split(CRLF, 1)[0])
 
->>>>>>> efbe83e4fdd003bcdea2aa6418b8a053b6ef0d05
         print("==============================")
         print(first_line)
         if len(first_line) > 0:
