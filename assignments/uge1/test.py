@@ -8,7 +8,7 @@ class test:
 #        return "test1"
 
     def show_in_menu():
-        button = """<button class="btn btn-primary active custom" type="submit"z> Test </button> """
+        button = "Test"
         return button
     
 
