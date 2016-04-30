@@ -1,8 +1,10 @@
-import socket
+import os
 import re
+import socket
+from urllib.parse import urlparse
 from protocol.HttpGet import HttpGet
 from protocol.Response import Response
-import os
+
 CRLF = '\r\n'
 
 
@@ -27,7 +29,12 @@ class HttpServer:
 
     def handle_request(self, csock):
         request = csock.recv(8192).decode()  # returns request headers. (no more than 8kb)
-
+        #f = open("result.txt",'w')
+        #f.write(request)
+        #urlencode
+        f = urlparse(request)
+        print("scheme:\t"+f.scheme)
+        print("path:\t"+f.path)
         #        match = re.match("(\w+)\s(?:/|(.*)(/[\w\d]+\.html?))\sHTTP/1", request)
         first_line = (request.split(CRLF, 1)[0])
 

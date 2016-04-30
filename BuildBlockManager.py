@@ -13,7 +13,7 @@ class BbManager:
             # if the path does not exists then we return index.html file as front page
             return Options.root_dir + "/index.html"
     """
-    def start(self, filepath):
+    def start(filepath):
         html_code = ""
         if os.path.exists(filepath):#Options.root_blocks + filepath):
             files = os.listdir(filepath)#Options.root_blocks + filepath)
