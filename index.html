@@ -60,9 +60,9 @@
 
 		<div class="col-lg-3">
         	<div class="row cluster">
-        		<button id="For" onclick="insert('For')" draggable="true" ondragstart="drag(event)">For</button>
-        		<button id="While" onclick="insert('While')" draggable="true" ondragstart="drag(event)">While</button>
-        		<button id="Next" onclick="insert('Next')" draggable="true" ondragstart="drag(event)">Next</button>
+        		<button class="btn btn-primary active" id="For" onclick="insert('For')" draggable="true" ondragstart="drag(event)">For</button>
+        		<button class="btn btn-primary active" id="While" onclick="insert('While')" draggable="true" ondragstart="drag(event)">While</button>
+        		<button class="btn btn-primary active" id="Next" onclick="insert('Next')" draggable="true" ondragstart="drag(event)">Next</button>
         		<button class="btn btn-primary active custom" type="submit">Button</button>
         		<button class="btn btn-primary active custom" type="submit">Button</button>
         		<button class="btn btn-primary active custom" type="submit">Button</button>
@@ -97,8 +97,8 @@
     ev.preventDefault();
 }
 
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+function drag(event) {
+    event.dataTransfer.setData("text", event.target.id);
 }
 
 function drop(ev) {
@@ -112,6 +112,8 @@ function drop(ev) {
     var txtOutput = document.getElementById("my-textarea");
     txtOutput.value += "Hi there, " + name + "!" + "\n"
     } // end sayHi
+
+
     </script>
 
   </div>
