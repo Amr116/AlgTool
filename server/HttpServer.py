@@ -6,8 +6,6 @@ from protocol.HttpGet import HttpGet
 from protocol.Response import Response
 
 CRLF = '\r\n'
-
-
 class HttpServer:
     host = None
     port = None
@@ -33,27 +31,20 @@ class HttpServer:
         #f.write(request)
         #urlencode
         f = urlparse(request)
-        print("scheme:\t"+f.scheme)
-        print("path:\t"+f.path)
+
         #        match = re.match("(\w+)\s(?:/|(.*)(/[\w\d]+\.html?))\sHTTP/1", request)
         first_line = (request.split(CRLF, 1)[0])
 
-        print("==============================")
-        print(first_line)
-        if len(first_line) >= 0:
+        #print(first_line)
+        if len(first_line) > 0:
             fl_split = first_line.split()
             method = fl_split[0]
             uri = fl_split[1]
             protocol = fl_split[2]
+            if method == "GET":
+                HttpGet(uri, csock)
+            elif method == "POST":
+                print("We did not implement POST yet")
+                return
         else:
             print("We reach herei ...!\nSomething weird happened..!")
-            exit()
-
-            # method, uri, protocol = first_line.split()
-
-            # print(uri)
-        if method == "GET":
-            HttpGet(uri, csock)
-        elif method == "POST":
-            print("We did not implement POST yet")
-            return

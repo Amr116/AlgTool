@@ -14,8 +14,8 @@ class HttpGet(HttpRequest):
 	    """
         filename = match.split("/")[-1]
         filepath = match.replace(filename, "")
-        print("File name : " + filename)
-        print("File path : " + filepath)
+#        print("File name : " + filename)
+#        print("File path : " + filepath)
 
         if filename is None or filepath is None or filepath is "/":  # directory index requested
             filename = "index.html"
