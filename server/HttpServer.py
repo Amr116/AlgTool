@@ -46,5 +46,5 @@ class HttpServer:
             elif method == "POST":
                 print("We did not implement POST yet")
                 return
-        else:
-            print("We reach herei ...!\nSomething weird happened..!")
+#        else:
+#            print("We reach herei ...!\nSomething weird happened..!")
