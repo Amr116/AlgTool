@@ -79,8 +79,8 @@
         	</div>
       	</div>
 
-      	<textarea class="col-lg-6 mytextarea"  id="my-textarea" placeholder="Pseudocode Container" ondrop="drop(event)" ondragover="allowDrop(event)">
-      	</textarea>
+      	<div class="col-lg-6 mytextarea"  id="my-textarea" placeholder="Pseudocode Container" ondrop="drop(event)" ondragover="allowDrop(event)">
+      	</div>
 
 		<div class="col-lg-3">
         	<div class="descripe-text"> Variables Log Container</div>
@@ -99,16 +99,39 @@ function drag(event) {
 
 function drop(ev) {
     ev.preventDefault();
+
+    var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
+              '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
+
+        var child = document.createElement('div');
+child.innerHTML = str;
+child = child.firstChild;
+
     var data = ev.dataTransfer.getData("text");
     var txtOutput = document.getElementById("my-textarea");
     txtOutput.value += "Hi there, " + data + "!" + "\n"
+    ev.target.appendChild(child);
+   ev.stopPropagation();
+   return false;
 }
     // from textBoxes.html
     function insert(name){
-    var txtOutput = document.getElementById("my-textarea");
-    txtOutput.value += "Hi there, " + name + "!" + "\n"
+        //var para = document.createElement("DIV");                       // Create a <p> node
+//var t = document.createTextNode("Insert");      // Create a text node
+//para.appendChild(t);                                          // Append the text to <p>
+//document.getElementById("myDIV").appendChild(para);
+          var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
+              '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
+
+        var child = document.createElement('div');
+child.innerHTML = str;
+child = child.firstChild;
+document.getElementById('test').appendChild(child);
     } // end sayHi
 
+
+      var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
+              '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
 
     </script>
 
