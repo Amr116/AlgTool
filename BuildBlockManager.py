@@ -23,7 +23,7 @@ class BbManager:
                     print(path)
                     path = path.replace("/",".")[:-3]
                     sy = importlib.import_module(path)
-                    html = "<button class=\"btn btn-primary active custom\" type=\"submit\"z> " + \
+                    html = "<button class=\"btn btn-primary active custom\" onclick=\"myFunction()\" type=\"submit\"z> " + \
                            sy.BuildBlock.show_in_menu() + " </button> " + "\n"
                     html_code += html
                     #print(self.html_code)
