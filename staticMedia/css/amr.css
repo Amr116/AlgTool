@@ -161,3 +161,6 @@ background: url(images/arrow_white.png) no-repeat 7px 10px;
 color: #a32403;
 background: #efefef url(images/arrow_on.png) no-repeat 7px 10px;
 }
+[draggable=true] {
+  -khtml-user-drag: element;
+}
