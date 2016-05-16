@@ -134,8 +134,8 @@
     function giveID(caller){
         var ids = [];
         var counter = 0;
-        if (ids.indexOf(newItem) == -1) {
-            ids.push(newItem);
+        if (ids.indexOf(caller) == -1) {
+            ids.push(caller);
             counter++;
             allIDs.push(caller+counter);
             return caller + counter;
