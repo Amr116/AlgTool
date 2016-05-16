@@ -36,7 +36,7 @@
 
 	<div class="row topbar">
 		<div class="col-lg-12">
-		</div> 
+		</div>
 	</div>
       <button class="btn btn-primary active" type="submit">Button</button>
       <button class="btn btn-primary active" type="submit">Button</button>
@@ -51,45 +51,50 @@
       <button class="btn btn-primary active" type="submit">Button</button>
       <button class="btn btn-primary active" type="submit">Button</button>
 
-  	
+
   	<div class="row down-container">
 
 		<div class="col-lg-3">
         	<div class="row cluster">
-        		<button class="btn btn-primary active" id="For" onclick="insert('For')" draggable="true" ondragstart="drag(event)">For</button>
-        		<button class="btn btn-primary active" id="While" onclick="insert('While')" draggable="true" ondragstart="drag(event)">While</button>
-        		<button class="btn btn-primary active" id="Next" onclick="insert('Next')" draggable="true" ondragstart="drag(event)">Next</button>
-        		<button class="btn btn-primary active custom" type="submit">Button</button>
-        		<button class="btn btn-primary active custom" type="submit">Button</button>
-        		<button class="btn btn-primary active custom" type="submit">Button</button>
-        		<br><br>
-        		<button class="btn btn-primary active custom" type="submit">DO</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<br><br>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
+        		<button class="btn btn-primary " id="For" onclick="insert('For');saveClick()" draggable="true" ondragstart="drag(event)">For</button>
+        		<button class="btn btn-primary " id="While" onclick="insert('While')" draggable="true" ondragstart="drag(event)">While</button>
+        		<button class="btn btn-primary " id="Next" onclick="insert('Next')" draggable="true" ondragstart="drag(event)">Next</button>
         	</div>
       	</div>
 
-      	<div class="col-lg-6 mytextarea"  id="my-textarea" placeholder="Pseudocode Container" ondrop="drop(event)" ondragover="allowDrop(event)">
+      	<div class="col-lg-6 mytextarea"  id="my-textarea" ondrop="drop(event)" ondragover="allowDrop(event)">
       	</div>
 
-		<div class="col-lg-3">
-        	<div class="descripe-text"> Variables Log Container</div>
+    <div class="col-lg-3">
+        <div class="descripe-text"> Variables Log Container <button onclick="cleanClick()"; class="btn btn-primary">Clear</button></div>
+        <div id="result"></div>
       	</div>
 
   	</div>
-        <!-- Drag and drop functions-->
-  <script type = "text/javascript">
-      function allowDrop(ev) {
+
+<!-- Drag and drop functions-->
+<script type = "text/javascript">
+/*====================================== Count Click Start here ============================================*/
+// Function to count how many times user has clicked on the button and save it to session cach!
+function saveClick() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+        } else {
+            localStorage.clickcount = 1;
+        }
+        document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+// Function to reset click amount in user session!
+function cleanClick() {
+    localStorage.clear();
+    document.getElementById("result").innerHTML = "You have cleaned click amount score!";
+}
+/*========================================= End of Click functionalty ======================================*/
+function allowDrop(ev) {
     ev.preventDefault();
 }
 
@@ -103,9 +108,9 @@ function drop(ev) {
     var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
               '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
 
-        var child = document.createElement('div');
-child.innerHTML = str;
-child = child.firstChild;
+    var child = document.createElement('div');
+    child.innerHTML = str;
+    child = child.firstChild;
 
     var data = ev.dataTransfer.getData("text");
     var txtOutput = document.getElementById("my-textarea");
@@ -114,26 +119,31 @@ child = child.firstChild;
    ev.stopPropagation();
    return false;
 }
-    // from textBoxes.html
-    function insert(name){
-        //var para = document.createElement("DIV");                       // Create a <p> node
-//var t = document.createTextNode("Insert");      // Create a text node
+// from textBoxes.html
+function insert(name){
+    var str = '<div class="procedure">'+name+'<input type="text" classe="procname"/>' +
+              '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
+
+    var child = document.createElement('div');
+    child.innerHTML = str;
+    child = child.firstChild;
+    document.getElementById("my-textarea").appendChild(child);
+
+//==========================================================================================//
+//var para = document.createElement("DIV");                     // Create a <p> node
+//var t = document.createTextNode("Insert");                    // Create a text node
 //para.appendChild(t);                                          // Append the text to <p>
 //document.getElementById("myDIV").appendChild(para);
-          var str = '<div class="procedure">For<input type="text" classe="procname"/>' +
+
+
+
+} // end sayHi
+
+
+    var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
               '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
 
-        var child = document.createElement('div');
-child.innerHTML = str;
-child = child.firstChild;
-document.getElementById("my-textarea").appendChild(child);
-    } // end sayHi
-
-
-      var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
-              '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
-//hej
-    </script>
+</script>
 
   </div>
     <!-- Bootstrap core JavaScript
