@@ -71,6 +71,7 @@
       	</div>
 
   	</div>
+<<<<<<< HEAD
 
 <!-- Drag and drop functions-->
 <script type = "text/javascript">
@@ -97,17 +98,25 @@ function cleanClick() {
 function allowDrop(ev) {
     ev.preventDefault();
 }
+=======
+        <!-- Drag and drop functions-->
+  <script type = "text/javascript">
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+>>>>>>> 193d25ad63b0ae6cb9c16a63ef744f41500215dc
 
-function drag(event) {
-    event.dataTransfer.setData("text", event.target.id);
-}
+    function drag(event) {
+        event.dataTransfer.setData("text", event.target.id);
+    }
 
-function drop(ev) {
-    ev.preventDefault();
+    function drop(ev) {
+        ev.preventDefault();
 
-    var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
-              '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
+        var str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;"><div class="plus" id="plus1" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+                  '<div style="float: left"> + </div><div class="plus" id="plus2" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>'
 
+<<<<<<< HEAD
     var child = document.createElement('div');
     child.innerHTML = str;
     child = child.firstChild;
@@ -144,6 +153,62 @@ function insert(name){
               '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
 
 </script>
+=======
+        var child = document.createElement('div');
+        child.innerHTML = str;
+        child = child.firstChild;
+
+        var data = ev.dataTransfer.getData("text");
+        var txtOutput = document.getElementById("my-textarea");
+        txtOutput.value += "Hi there, " + data + "!" + "\n"
+        ev.target.appendChild(child);
+        ev.stopPropagation();
+        return false;
+    }
+
+    // from textBoxes.html
+    function insert(name){
+        //var para = document.createElement("DIV");                       // Create a <p> node
+        //var t = document.createTextNode("Insert");      // Create a text node
+        //para.appendChild(t);                                          // Append the text to <p>
+        //document.getElementById("myDIV").appendChild(para);
+        var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
+                  '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
+
+        var child = document.createElement('div');
+        child.innerHTML = str;
+        child = child.firstChild;
+        document.getElementById('test').appendChild(child);
+    } // end sayHi
+
+    var allIDs = [];
+    function giveID(caller){
+        var ids = [];
+        var counter = 0;
+        if (ids.indexOf(caller) == -1) {
+            ids.push(caller);
+            counter++;
+            allIDs.push(caller+counter);
+            return caller + counter;
+        }
+            /*if (id[i] === caller) {
+                counter++;
+                return caller + counter;
+            }
+            i++;
+            */
+         else {
+                counter++;
+                allIDs.push(caller+counter);
+                return caller + counter;
+            }
+    }
+    // hvorfor vil det ikke push'e
+    /*  var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
+              '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
+    */
+    </script>
+>>>>>>> 193d25ad63b0ae6cb9c16a63ef744f41500215dc
 
   </div>
     <!-- Bootstrap core JavaScript
