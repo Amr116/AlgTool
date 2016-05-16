@@ -64,8 +64,12 @@
 
 		<div class="col-lg-3">
         	<div class="row cluster">
+<<<<<<< HEAD
         		<div id="For" draggable="true" style="border: solid black;" ondragstart="drag(event)">plus</div>
                 <div id="And" draggable="true" style="border: solid black;" ondragstart="drag(event)">and</div>
+=======
+        		<div id="plus" draggable="true" style="border: solid black;" ondragstart="drag(event)">plus</div>
+>>>>>>> origin/master
         	</div>
       	</div>
 
@@ -81,6 +85,26 @@
 
 
 <script type = "text/javascript">
+String.prototype.replaceAll = function (find, replace) {
+    var str = this;
+    return str.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replace);
+};
+    function insertPlus(){
+        var str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;"><div class="plus" id="" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+                '<div style="float: left"> + </div><div class="plus" id="" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>'
+
+        str = str.replaceAll('id=""', ('id="'+ giveID("plus")+ '"'));
+        console.log(str);
+        return str;
+    }
+    var idCounter = 0;
+    var allIDs = [];
+    function giveID(caller){
+        idCounter++;
+        allIDs.push(caller+idCounter);
+        return caller + idCounter;
+    }
+
     function allowDrop(ev) {
         ev.preventDefault();
     }
@@ -105,12 +129,26 @@ function dropLines(ev) {
     function drop(ev) {
         ev.preventDefault();
 
+<<<<<<< HEAD
         var id = ev.dataTransfer.getData("text");
         var str = insert(id);
+=======
+        //var str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;"><div class="plus" id="plus1" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+        //        '<div style="float: left"> + </div><div class="plus" id="plus2" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>'
+
+        var callerId = ev.dataTransfer.getData("text");
+        console.log(callerId);
+        var str;
+        switch (callerId){
+            case "plus": str  = insertPlus();
+                break;
+            console.log(str);
+        }
+>>>>>>> origin/master
         var child = document.createElement('div');
         child.innerHTML = str;
         child = child.firstChild;
-
+        console.log(str);
         ev.target.appendChild(child);
         ev.stopPropagation();
         return false;
@@ -133,6 +171,7 @@ function dropLines(ev) {
         }
         return str;
     }
+
 
 </script>
 
