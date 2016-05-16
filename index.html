@@ -50,32 +50,13 @@
       <button class="btn btn-primary active" type="submit">Button</button>
       <button class="btn btn-primary active" type="submit">Button</button>
       <button class="btn btn-primary active" type="submit">Button</button>
-
+        		
   	
   	<div class="row down-container">
 
 		<div class="col-lg-3">
         	<div class="row cluster">
-        		<button class="btn btn-primary active" id="For" onclick="insert('For')" draggable="true" ondragstart="drag(event)">For</button>
-        		<button class="btn btn-primary active" id="While" onclick="insert('While')" draggable="true" ondragstart="drag(event)">While</button>
-        		<button class="btn btn-primary active" id="Next" onclick="insert('Next')" draggable="true" ondragstart="drag(event)">Next</button>
-        		<button class="btn btn-primary active custom" type="submit">Button</button>
-        		<button class="btn btn-primary active custom" type="submit">Button</button>
-        		<button class="btn btn-primary active custom" type="submit">Button</button>
-        		<br><br>
-        		<button class="btn btn-primary active custom" type="submit">DO</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<br><br>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
+        		<div id="For" draggable="true" style="border: solid black;" ondragstart="drag(event)">plus</div>
         	</div>
       	</div>
 
@@ -88,7 +69,9 @@
 
   	</div>
         <!-- Drag and drop functions-->
-  <script type = "text/javascript">
+
+
+<script type = "text/javascript">
     function allowDrop(ev) {
         ev.preventDefault();
     }
@@ -101,62 +84,30 @@
         ev.preventDefault();
 
         var str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;"><div class="plus" id="plus1" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
-                  '<div style="float: left"> + </div><div class="plus" id="plus2" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>'
+                '<div style="float: left"> + </div><div class="plus" id="plus2" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>'
 
         var child = document.createElement('div');
         child.innerHTML = str;
         child = child.firstChild;
 
-        var data = ev.dataTransfer.getData("text");
-        var txtOutput = document.getElementById("my-textarea");
-        txtOutput.value += "Hi there, " + data + "!" + "\n"
         ev.target.appendChild(child);
         ev.stopPropagation();
         return false;
     }
-
     // from textBoxes.html
     function insert(name){
-        //var para = document.createElement("DIV");                       // Create a <p> node
-        //var t = document.createTextNode("Insert");      // Create a text node
-        //para.appendChild(t);                                          // Append the text to <p>
-        //document.getElementById("myDIV").appendChild(para);
-        var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
-                  '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
+        var str = '<div class="procedure"><input type="text" class="procname" style="float: left;"/>' +
+                    '<div class="container" ondrop="function(event){handleDrop(event,42);}">' +
+                    '<div class="procedure"> For <input type="text" class="procname" style="margin-left: auto"/>' +
+                    '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
 
         var child = document.createElement('div');
         child.innerHTML = str;
         child = child.firstChild;
-        document.getElementById('test').appendChild(child);
-    } // end sayHi
-
-    var allIDs = [];
-    function giveID(caller){
-        var ids = [];
-        var counter = 0;
-        if (ids.indexOf(caller) == -1) {
-            ids.push(caller);
-            counter++;
-            allIDs.push(caller+counter);
-            return caller + counter;
-        }
-            /*if (id[i] === caller) {
-                counter++;
-                return caller + counter;
-            }
-            i++;
-            */
-         else {
-                counter++;
-                allIDs.push(caller+counter);
-                return caller + counter;
-            }
+        document.getElementById("my-textarea").appendChild(child);
     }
-    // hvorfor vil det ikke push'e
-    /*  var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
-              '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
-    */
-    </script>
+
+</script>
 
   </div>
     <!-- Bootstrap core JavaScript
