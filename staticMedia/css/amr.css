@@ -6,29 +6,29 @@ body {
 	background-color: #bfbfbf ;
 	color: black;
 	text-align: center;
-		border: 2px solid black;   		
+	border: 2px solid black;
 }
 	.col-lg-6{
 	height: 800px;
 	background-color: #bfbfbf ;
 	color: black;
 	text-align: left;
-		border: 2px solid black;   		
-}   	
+	border: 2px solid black;
+}
 .col-lg-4{
   height: 800px;
   background-color: #bfbfbf ;
   color: black;
   text-align: center;
   border: 2px solid black;
-}     
+}
 	.col-lg-3{
 	height: 800px;
-	background-color: #bfbfbf ; 
+	background-color: #bfbfbf ;
 	color: black;
 	text-align: center;
 	border: 2px solid black;
-}   	
+}
 .descripe-text{
   font-size: 25px;
   color: black;
