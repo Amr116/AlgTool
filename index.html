@@ -100,8 +100,8 @@
     function drop(ev) {
         ev.preventDefault();
 
-        var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
-                  '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
+        var str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;"><div class="plus" id="plus1" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+                  '<div style="float: left"> + </div><div class="plus" id="plus2" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>'
 
         var child = document.createElement('div');
         child.innerHTML = str;
