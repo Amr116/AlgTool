@@ -156,17 +156,19 @@ function dropLines(ev) {
     // from textBoxes.html
     function insert(id){
         switch (id) {
-            case "For": str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;">' +
-                    '<div class="contain" id="plus1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
-                    '<div style="float: left"> + </div>' +
-                    '<div class="contain" id="plus1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
-                    '</div>';
+            case "For":
+                str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;">' +
+                        '<div class="contain" id="plus1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+                        '<div style="float: left"> + </div>' +
+                        '<div class="contain" id="plus1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+                        '</div>';
                 break;
-            case "And": str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;">' +
-                    '<div class="contain" id="plus1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
-                    '<div style="float: left"> + </div>' +
-                    '<div class="contain" id="plus1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
-                    '</div>';
+            case 'And':
+                str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;">' +
+                        '<div class="contain" id="plus1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+                        '<div style="float: left"> + </div>' +
+                        '<div class="contain" id="plus1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+                        '</div>';
                 break;
         }
         return str;
