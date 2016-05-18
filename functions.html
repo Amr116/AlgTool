@@ -1,0 +1,35 @@
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(event) {
+        event.dataTransfer.setData("text", event.target.id);
+    }
+
+    function dropLines(ev) {
+        ev.preventDefault();
+
+        var id = ev.dataTransfer.getData("text");
+        var str = '<li>' + insert(id) + '</li>';
+        var child = document.createElement('div');
+        child.innerHTML = str;
+        child = child.firstChild;
+
+        ev.target.appendChild(child);
+        ev.stopPropagation();
+        return false;
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+
+        var id = ev.dataTransfer.getData("text");
+        var str = insert(id);
+        var child = document.createElement('div');
+        child.innerHTML = str;
+        child = child.firstChild;
+
+        ev.target.appendChild(child);
+        ev.stopPropagation();
+        return false;
+    }

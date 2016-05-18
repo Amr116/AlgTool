@@ -22,16 +22,32 @@ class HttpGet(HttpRequest):
             filepath = "/"
             if Filesystem.file_exists(filepath, filename):  # we look for index.html
                 #self.serve_file(filepath, filename, csock)
-                with open(Options.root_dir + "/start.html", 'r') as fhandle:
-                    start = fhandle.read()
-                with open(Options.root_dir + "/end.html", 'r') as fhandle:
-                    end = fhandle.read()
-                button = BbManager.start("assignments/uge1/")
-                msg = start + button + end
-                csock.sendall(("""HTTP/1.1 404 Not Found
+                (BuildBlockButton, BuildBlockScreen) = BbManager.start("assignments/uge2/")
+                with open(Options.root_dir + "/header.html", 'r') as fhandle:
+                    Header = '<!DOCTYPE html>\n<html lang="en">\n' + fhandle.read()
+                with open(Options.root_dir + "/tempstyle.html", 'r') as fhandle:
+                    Style = fhandle.read()
+                with open(Options.root_dir + "/topbar.html", 'r') as fhandle:
+                    topbar = '<body>\n<div class="container-fluid">\n' + fhandle.read()
+                ButtonMenu = '<div class="row down-container">\n<div class="col-lg-3">\n<div class="row cluster">' + \
+                            BuildBlockButton + '</div>\n</div>\n'
+                with open(Options.root_dir + "/algoscreen.html", 'r') as fhandle:
+                    AlgorithmScreen = fhandle.read()
+                with open(Options.root_dir + "/logcontainer.html", 'r') as fhandle:
+                    LogContainer = fhandle.read() + '</div>\n'
+                ShowBBInScreen = 'function insert(id){\n switch (id) {\n' + \
+                                 BuildBlockScreen + '}\n return str;\n}'
+                with open(Options.root_dir + "/functions.html", 'r') as fhandle:
+                    Functions = '<script type = "text/javascript">\n' + \
+                                fhandle.read() + ShowBBInScreen + \
+                                '</script>'
+                with open(Options.root_dir + "/tail.html", 'r') as fhandle:
+                    Tail = fhandle.read() + '</body>\n</html>'
+                CompletePage = Header + Style + topbar + ButtonMenu + AlgorithmScreen + LogContainer + Functions + Tail
+                csock.sendall(("""HTTP/1.1 200 OK
 						 Content-Type: text/html
-						 Content-Length: """ + str(len(msg)) + """
-						 \n\n""" + msg + """\r\n""").encode())
+						 Content-Length: """ + str(len(CompletePage)) + """
+						 \n\n""" + CompletePage + """\r\n""").encode())
             else:  # no index file
                 Response.reply_404(csock)
         else:  # a file was specified, so we serve it.

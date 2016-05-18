@@ -14,24 +14,28 @@ class BbManager:
             return Options.root_dir + "/index.html"
     """
     def start(filepath):
-        html_code = ""
+        BuildBlockButton = ""
+        BuildBlockScreen = ""
         if os.path.exists(filepath):#Options.root_blocks + filepath):
             files = os.listdir(filepath)#Options.root_blocks + filepath)
             for sysfile in files:
                 if sysfile.endswith(".py"):
                     path = os.path.join(filepath,sysfile)
-                    print(path)
+                    id = sysfile[:-3]
+                    print(id)
                     path = path.replace("/",".")[:-3]
                     sy = importlib.import_module(path)
-                    html = "<button class=\"btn btn-primary active custom\" onclick=\"myFunction()\" type=\"submit\"z> " + \
-                           sy.BuildBlock.show_in_menu() + " </button> " + "\n"
-                    html_code += html
-                    #print(self.html_code)
+                    Button = '<div id="' + id + '" draggable="true" style="border: 1px solid black;" ondragstart="drag(event)">' + \
+                           sy.BuildBlock.show_in_menu() + "</div>\n<br>"
+                    BuildBlockButton += Button
+                    Screen = "case '" + id + "': str = '" + \
+                           sy.BuildBlock.show_in_screen() + "';\n break;\n"
+                    BuildBlockScreen += Screen
 
         else:
             print("ELSE")
 
-        return html_code
+        return BuildBlockButton, BuildBlockScreen
 #if __name__ == '__main__':
 #    manager = BbManager()
 #    ls = manager.start("assignments/uge1/")
