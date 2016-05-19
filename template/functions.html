@@ -55,7 +55,7 @@
         ev.stopPropagation();
         saveData(id);
 //        document.getElementById("result").innerHTML = id;
-
+        i += 1;
         return false;
     }
 
@@ -84,15 +84,22 @@
 
     var i = 1;
     function saveData(id) {
-        var obj = [];
-        obj.push({i, id});
-        localStorage.setItem('myStorage', JSON.stringify(obj));
-        var data = JSON.parse(localStorage.getItem('myStorage'));
-        document.getElementById("result").innerHTML = data;
+        //var obj = [];
 
-        i += 1;
+        obj = {, id};
+        localStorage.setItem('myStorage', JSON.stringify(obj));
+        //i += 1;
     }
     function getdata() {
         var data = JSON.parse(localStorage.getItem('myStorage'));
-        document.getElementById("result").innerHTML = data;
+        //document.getElementById("result").innerHTML = "key is "+data.i;
+        document.getElementById("result").innerHTML = "key is"+data.i+"<br>value is "+data.id;
+
+
+    //    var data = JSON.parse(localStorage.getItem('myStorage'));
+    //    document.getElementById("result").innerHTML = data;
+    }
+    function clear() {
+        localStorage.clear();
+        document.getElementById("result").innerHTML = "you have cleared data"+"<br>"
     }
