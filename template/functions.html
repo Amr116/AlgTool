@@ -18,20 +18,16 @@
         id = id.toLowerCase();
         //str = str.replaceAll(/id="/+id+/"/gi, ('id="'+ giveID(id)+ '"'));
         //str = str.split('id="'+id+'"').join('id="'+ giveID(id)+ '"');
-    while (str.search('id="'+id+'"') != -1){
-    len1 = str.length;
-    len = str.substring(0,str.search('id="'+id+'"')).length+('id="'+id+'"').length;
-    str = str.substring(0,str.search('id="'+id+'"')) + ('id="'+ giveID(id)+ '"') + str.substring(len, len1);
-    }
+        while (str.search('id="'+id+'"') != -1){
+            len1 = str.length;
+            len = str.substring(0,str.search('id="'+id+'"')).length+('id="'+id+'"').length;
+            str = str.substring(0,str.search('id="'+id+'"')) + ('id="'+ giveID(id)+ '"') + str.substring(len, len1);
+        }
 
-    console.log(str);
+        console.log(str);
         return str;
     }
-    /*while str.search == -1{
-    len1 = str.length;
-    len = str.substring(0,search('id="'+id+'"')).length +('id="'+id+'"').length ;
-    str = str.substring(0,search('id="'+id+'"')) + ('id="'+ giveID(id)+ '"') + str.substring(len, len1);
-    */
+
     /* */
 
 
