@@ -17,6 +17,9 @@
 
         ev.target.appendChild(child);
         ev.stopPropagation();
+        saveData(id);
+//        document.getElementById("result").innerHTML = id;
+
         return false;
     }
 
@@ -36,6 +39,22 @@
 
             ev.target.appendChild(child);
             ev.stopPropagation();
+            saveData(id);
             return false;
         }
+    }
+
+    var i = 1;
+    function saveData(id) {
+        var obj = [];
+        obj.push({i, id});
+        localStorage.setItem('myStorage', JSON.stringify(obj));
+        var data = JSON.parse(localStorage.getItem('myStorage'));
+        document.getElementById("result").innerHTML = data;
+
+        i += 1;
+    }
+    function getdata() {
+        var data = JSON.parse(localStorage.getItem('myStorage'));
+        document.getElementById("result").innerHTML = data;
     }
