@@ -1,3 +1,37 @@
+    /* Functions to assign ID's to dropped building blocks*/
+
+    String.prototype.replaceAll = function (find, replace) {
+        var str = this;
+        return str.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replace);
+    };
+
+    var idCounter = 0;
+    var allIDs = [];
+    function giveID(caller){
+        idCounter++;
+        allIDs.push(caller+idCounter);
+    console.log(caller+idCounter);
+        return caller + idCounter;
+    }
+    function assignID(id,str){
+        str = str.toLowerCase();
+        id = id.toLowerCase();
+        //str = str.replaceAll(/id="/+id+/"/gi, ('id="'+ giveID(id)+ '"'));
+        //str = str.split('id="'+id+'"').join('id="'+ giveID(id)+ '"');
+        while (str.search('id="'+id+'"') != -1){
+            len1 = str.length;
+            len = str.substring(0,str.search('id="'+id+'"')).length+('id="'+id+'"').length;
+            str = str.substring(0,str.search('id="'+id+'"')) + ('id="'+ giveID(id)+ '"') + str.substring(len, len1);
+        }
+
+        console.log(str);
+        return str;
+    }
+
+    /* */
+
+
+
     function allowDrop(ev) {
         ev.preventDefault();
     }
@@ -10,7 +44,9 @@
         ev.preventDefault();
 
         var id = ev.dataTransfer.getData("text");
+        console.log(id);
         var str = '<li>' + insert(id) + '</li>';
+        str = assignID(id, str);
         var child = document.createElement('div');
         child.innerHTML = str;
         child = child.firstChild;
@@ -32,7 +68,9 @@
 
         else{
             var id = ev.dataTransfer.getData("text");
+            console.log(id);
             var str = insert(id);
+            str = assignID(id, str);
             var child = document.createElement('div');
             child.innerHTML = str;
             child = child.firstChild;
