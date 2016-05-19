@@ -25,7 +25,7 @@ class BbManager:
                     print(id)
                     path = path.replace("/",".")[:-3]
                     sy = importlib.import_module(path)
-                    Button = '<div id="' + id + '" draggable="true" style="border: 1px solid black;" ondragstart="drag(event)">' + \
+                    Button = '<div id="' + id + '" draggable="true" style="display: inline-block; border: 1px solid black;" ondragstart="drag(event)">' + \
                            sy.BuildBlock.show_in_menu() + "</div>\n<br>"
                     BuildBlockButton += Button
                     Screen = "case '" + id + "': str = '" + \
