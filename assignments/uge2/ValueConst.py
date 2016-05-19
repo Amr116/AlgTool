@@ -7,5 +7,5 @@ class BuildBlock:
         return Button
 
     def show_in_screen():
-        Screen = '<div class="variable"><input type="number" class="constant"/>'
+        Screen = '<input type="number" class="constant" style="width: 50px"/>'
         return Screen

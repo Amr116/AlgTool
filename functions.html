@@ -23,13 +23,19 @@
     function drop(ev) {
         ev.preventDefault();
 
-        var id = ev.dataTransfer.getData("text");
-        var str = insert(id);
-        var child = document.createElement('div');
-        child.innerHTML = str;
-        child = child.firstChild;
+        if (ev.target.hasChildNodes()){
+            ev.stopPropagation();
+        }
 
-        ev.target.appendChild(child);
-        ev.stopPropagation();
-        return false;
+        else{
+            var id = ev.dataTransfer.getData("text");
+            var str = insert(id);
+            var child = document.createElement('div');
+            child.innerHTML = str;
+            child = child.firstChild;
+
+            ev.target.appendChild(child);
+            ev.stopPropagation();
+            return false;
+        }
     }
