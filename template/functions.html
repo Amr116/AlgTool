@@ -45,8 +45,25 @@
     function dropLines(ev) {
         ev.preventDefault();
 
+        var test = ev.target.tagName;
+        if (test == "LI"){
+            var id = ev.dataTransfer.getData("text");
+            var str = '<li>' + insert(id) + '</li>';
+            str = assignID(id, str);
+            var child = document.createElement('div');
+            child.innerHTML = str;
+            child = child.firstChild;
+
+            ev.target.parentNode.appendChild(child);
+            ev.stopPropagation();
+            saveData(id);
+
+            LineId += 1;
+            return false;
+        }
+        else{
         var id = ev.dataTransfer.getData("text");
-        var str = '<li id="'+ LineId + '">' + insert(id) + '</li>';
+        var str = '<li>' + insert(id) + '</li>';
         str = assignID(id, str);
         var child = document.createElement('div');
         child.innerHTML = str;
@@ -58,6 +75,7 @@
 
         LineId += 1;
         return false;
+        }
     }
 
     function drop(ev) {
