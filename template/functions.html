@@ -40,12 +40,13 @@
         event.dataTransfer.setData("text", event.target.id);
     }
 
+    var LineId = 1;
+
     function dropLines(ev) {
         ev.preventDefault();
 
         var id = ev.dataTransfer.getData("text");
-        console.log(id);
-        var str = '<li>' + insert(id) + '</li>';
+        var str = '<li id="'+ LineId + '">' + insert(id) + '</li>';
         str = assignID(id, str);
         var child = document.createElement('div');
         child.innerHTML = str;
@@ -54,8 +55,8 @@
         ev.target.appendChild(child);
         ev.stopPropagation();
         saveData(id);
-//        document.getElementById("result").innerHTML = id;
-        i += 1;
+
+        LineId += 1;
         return false;
     }
 
@@ -86,7 +87,7 @@
     function saveData(id) {
         //var obj = [];
 
-        obj = {, id};
+        obj = {i, id};
         localStorage.setItem('myStorage', JSON.stringify(obj));
         //i += 1;
     }
@@ -101,5 +102,5 @@
     }
     function clear() {
         localStorage.clear();
-        document.getElementById("result").innerHTML = "you have cleared data"+"<br>"
+        document.getElementById("result").innerHTML = "you have cleared data"+"<br>";
     }
