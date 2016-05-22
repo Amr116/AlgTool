@@ -30,7 +30,10 @@
 
     /* */
 
-
+    function test() {
+        var test= document.getElementById("my-textarea").innerHTML;
+        alert(test);
+    }
 
     function allowDrop(ev) {
         ev.preventDefault();
@@ -62,19 +65,19 @@
             return false;
         }
         else{
-        var id = ev.dataTransfer.getData("text");
-        var str = '<li>' + insert(id) + '</li>';
-        str = assignID(id, str);
-        var child = document.createElement('div');
-        child.innerHTML = str;
-        child = child.firstChild;
+            var id = ev.dataTransfer.getData("text");
+            var str = '<li>' + insert(id) + '</li>';
+            str = assignID(id, str);
+            var child = document.createElement('div');
+            child.innerHTML = str;
+            child = child.firstChild;
 
-        ev.target.appendChild(child);
-        ev.stopPropagation();
-        saveData(id);
+            ev.target.appendChild(child);
+            ev.stopPropagation();
+            saveData(id);
 
-        LineId += 1;
-        return false;
+            LineId += 1;
+            return false;
         }
     }
 
@@ -122,3 +125,4 @@
         localStorage.clear();
         document.getElementById("result").innerHTML = "you have cleared data"+"<br>";
     }
+
