@@ -105,24 +105,26 @@
     }
 
     var i = 1;
-    function saveData(id) {
+    function saveData(LineId,id) {
         //var obj = [];
 
-        obj = {i, id};
+        obj = {LineId, id};
         localStorage.setItem('myStorage', JSON.stringify(obj));
         //i += 1;
     }
     function getdata() {
         var data = JSON.parse(localStorage.getItem('myStorage'));
         //document.getElementById("result").innerHTML = "key is "+data.i;
-        document.getElementById("result").innerHTML = "key is"+data.i+"<br>value is "+data.id;
+        document.getElementById("result").innerHTML = "key is"+data.LineId+"<br>value is "+data.id+"<br>";
 
+        //for(var count = 0; count < 10; count ++) {
+        //    localStorage.getItem('myStorage').length;
+        //}
 
     //    var data = JSON.parse(localStorage.getItem('myStorage'));
     //    document.getElementById("result").innerHTML = data;
     }
-    function clear() {
+    function cleanStoarge() {
         localStorage.clear();
-        document.getElementById("result").innerHTML = "you have cleared data"+"<br>";
+        document.getElementById("result").innerHTML = "you have cleared data";
     }
-
