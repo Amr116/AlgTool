@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from server.HttpServer import HttpServer
 
 if __name__ == '__main__':
