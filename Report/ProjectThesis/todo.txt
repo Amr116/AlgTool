@@ -1,0 +1,62 @@
+english summary
+
+
+Go-sektionen, skal vi slette den, eller beholde som et eksempel på de overvejelser vi havde foretaget
+
+
+design - er det en eksempel på vores oprindelig tanker, eller skal det beskrive det, som er det "færdige" produkt. eller en blanding af de to?
+- delen med visualisering skal skrives om, da vi ikke kan nå at implementere visualisering i form af "pretty-printing"
+-distribution omskrives
+-navngive ting i design, så vi er konsekvente over hvad vi kalder ting, og ikke begynder at skrive om noget som vi ikke har introduceret endnu
+
+
+problem analysis skal skrives om. noget med stakeholders
+https://en.wikibooks.org/wiki/Systems_Analysis_and_Design/Introduction#Analysis
+
+
+inspiration - skriv en afsnit om blockly
+
+design
+- subsection designing the server
+- subsection design the building blocks
+
+implementation - er der mere vi skal have under  implementation?
+- skriv om insert, drop og dropLines functioner før buildblocks
+building blocks - skrives om
+- beskrivelse af de forskellige funktioner i en buildingblock
+- show_in_screen, functionality og type
+- tilføjelse af billed af contain style
+- building block grammar skal rettes
+
+
+
+ui- skal læses om skrives om hvis nødvendigt
+
+
+server - beskrivelse af server implementation
+
+
+the webpage - hvordan virker hjemmesiden
+- muligvis skal kaldes noget andet end the webpage
+
+
+step-by-step- hvordan virker vores håndkørsel
+- beskrivelse af implementationen
+
+
+import/export - hvis vi får tid til at implementere import og export
+
+
+work progress - slettes eller beholdes?
+- hvis vi skal beholde den, skal vi vel rette i den, så vi beskriver vores arbejdsforløb og hvordan om vi overholdte time schedule
+
+
+der skal tilføjes tegninger og diagramer
+
+
+konklusion - en konklusion skal skrives
+
+
+references - tilføj og formater referrencer
+
+program -> application . I think it is better meaningful to write application then program  (amr)

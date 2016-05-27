@@ -1,0 +1,43 @@
+\begin{thebibliography}{4}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Cormen(2009)]{algbog}
+Thomas~H Cormen.
+\newblock \emph{Introduction to algorithms}.
+\newblock MIT press, 2009.
+
+\bibitem[Guo()]{pythontutor}
+Philip~J. Guo.
+\newblock \emph{Online Python Tutor}.
+\newblock \url{http://www.pythontutor.com/}, [Accessed: 11-04-2016].
+
+\bibitem[Blockly]{Blockly}
+Google Blockly.
+\newblock \emph{A library for building visual programming editors.}.
+\newblock \url{https://developers.google.com/blockly/},
+\newblock \url{http://www.webcitation.org/query?url=https%3A%2F%2Fdevelopers.google.com%2Fblockly%2F&date=2016-05-26}
+[Accessed: 26-05-2016].
+
+\bibitem[Guo(2013)]{Guo:2013:OPT:2445196.2445368}
+Philip~J. Guo.
+\newblock Online python tutor: Embeddable web-based program visualization for
+  cs education.
+\newblock In \emph{Proceeding of the 44th ACM Technical Symposium on Computer
+  Science Education}, SIGCSE '13, pages 579--584, New York, NY, USA, 2013. ACM.
+\newblock ISBN 978-1-4503-1868-6.
+\newblock \doi{10.1145/2445196.2445368}.
+\newblock URL \url{http://doi.acm.org/10.1145/2445196.2445368}.
+
+\bibitem[Foutsitzis and Demetriadis(2010)]{foutsitzis2010teaching}
+Christos~G Foutsitzis and Stavros~N Demetriadis.
+\newblock Teaching algorithms with the use of a web-based scripted
+  collaboration environment and algorithm visualization tool: Results from a
+  case study.
+\newblock In \emph{Intelligent Networking and Collaborative Systems (INCOS),
+  2010 2nd International Conference on}, pages 116--123. IEEE, 2010.
+
+\end{thebibliography}
