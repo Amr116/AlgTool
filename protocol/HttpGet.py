@@ -22,7 +22,7 @@ class HttpGet(HttpRequest):
             filepath = "/"
             if Filesystem.file_exists(filepath, filename):  # we look for index.html
                 #self.serve_file(filepath, filename, csock)
-                (BuildBlockButton, BuildBlockScreen) = BbManager.start("assignments/uge2/")
+                (BuildBlockButton, BuildBlockScreen) = BbManager.start("assignments/week2/")
 
                 with open(Options.root_dir + "/template/header.html", 'r') as fhandle:
                     Header = '<!DOCTYPE html>\n<html lang="en">\n' + fhandle.read()

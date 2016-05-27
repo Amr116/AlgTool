@@ -10,7 +10,7 @@
     function giveID(caller){
         idCounter++;
         allIDs.push(caller+idCounter);
-    console.log(caller+idCounter);
+        console.log(caller+idCounter);
         return caller + idCounter;
     }
     function assignID(id,str){
