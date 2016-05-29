@@ -7,7 +7,7 @@ class Filesystem:
     @staticmethod
     def file_exists(filepath, filename):
         """ Check the requested filename if exists in this specified path
-	        Return True on success or False on fail
+	    Return True on success or False on fail
         """
         filename = filename.replace("/", "")
         if os.path.exists(Options.root_dir + filepath):
