@@ -3,7 +3,7 @@ import re
 import socket
 from urllib.parse import urlparse
 from protocol.HttpGet import HttpGet
-from protocol.Response import Response
+#from protocol.Response import Response
 
 CRLF = '\r\n'
 class HttpServer:
@@ -20,19 +20,15 @@ class HttpServer:
 
     def start_server(self):
         while True:
-            # csock : is the client request object
-            # caddr : is a tuple of the client HOST and PORT
+            # csock is the client request object
+            # caddr is a tuple of the client HOST and PORT
             csock, caddr = self.sock.accept()
             self.handle_request(csock)
 
     def handle_request(self, csock):
         request = csock.recv(8192).decode()  # returns request headers. (no more than 8kb)
-        #f = open("result.txt",'w')
-        #f.write(request)
-        #urlencode
         f = urlparse(request)
 
-        #        match = re.match("(\w+)\s(?:/|(.*)(/[\w\d]+\.html?))\sHTTP/1", request)
         first_line = (request.split(CRLF, 1)[0])
 
         #print(first_line)
@@ -43,8 +39,9 @@ class HttpServer:
             protocol = fl_split[2]
             if method == "GET":
                 HttpGet(uri, csock)
+            """
+            For future implementation, We can handle POST Method
             elif method == "POST":
-                print("We did not implement POST yet")
+                print("We got to POST Method")
                 return
-#        else:
-#            print("We reach herei ...!\nSomething weird happened..!")
+            """
