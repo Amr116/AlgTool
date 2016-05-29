@@ -1,6 +1,6 @@
 from Options import Options
 from filesystem.Filesystem import Filesystem
-from protocol.Response import Response
+from response.Response import Response
 
 
 class HttpRequest:
