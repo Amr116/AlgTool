@@ -22,7 +22,7 @@ class BbManager:
                 if sysfile.endswith(".py"):
                     path = os.path.join(filepath,sysfile)
                     id = sysfile[:-3]
-                    print(id)
+                    #print(id)
                     path = path.replace("/",".")[:-3]
                     sy = importlib.import_module(path)
                     Button = '<div id="' + id + '" draggable="true" style="display: inline-block; border: 1px solid black;" ondragstart="drag(event)">' + \
