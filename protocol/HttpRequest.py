@@ -28,11 +28,11 @@ class HttpRequest:
         data_list = []
         serve_data= ""
         for i in data:
-            data_list.append(os.path.join(fd, i))
+            data_list.append(fd+"/"+str(i))
 
         for j in data_list:
             serve_data += "<a class='btn btn-success week' href='/"+str(j)+"/'><div>"+str(j.replace("/","-"))+"</div></a> "
-
+ 
         fh_top = open("top_index.html", "r").read()
         fh_btm = open("bottom_index.html", "r").read()
         fh     = fh_top + serve_data +fh_btm
