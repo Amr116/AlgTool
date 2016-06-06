@@ -9,3 +9,6 @@ class BuildBlock:
     def show_in_screen():
         Screen = '<input type="text" class="varname" id="variable" style="width: 50px"/>'
         return Screen
+
+    def Add_Evaluation():
+        return ''

@@ -29,15 +29,13 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-
-  <body>
-
-  <div class="container-fluid">
-
+<body>
+<div class="container-fluid">
 	<div class="row topbar">
 		<div class="col-lg-12">
-		</div> 
+		</div>
 	</div>
+      <button class="btn btn-primary active" onclick="test()">test</button>
       <button class="btn btn-primary active" type="submit">Button</button>
       <button class="btn btn-primary active" type="submit">Button</button>
       <button class="btn btn-primary active" type="submit">Button</button>
@@ -49,46 +47,83 @@
       <button class="btn btn-primary active" type="submit">Button</button>
       <button class="btn btn-primary active" type="submit">Button</button>
       <button class="btn btn-primary active" type="submit">Button</button>
-      <button class="btn btn-primary active" type="submit">Button</button>
+<div class="row down-container">
+<div class="col-lg-3">
+<div class="row cluster"><div id="Divide" draggable="true" style="display: inline-block; border: 1px solid black;" ondragstart="drag(event)"><div class="contain">Expr</div><div style="float: left"> / </div><div class="contain">Expr</div></div>
+<div id="Floor" draggable="true" style="display: inline-block; border: 1px solid black;" ondragstart="drag(event)"><div style="float: left">|_ </div><div class="contain">Expr</div><div style="float: left"> _|</div></div>
+<div id="Plus" draggable="true" style="display: inline-block; border: 1px solid black;" ondragstart="drag(event)"><div class="contain">Expr</div><div style="float: left"> + </div><div class="contain">Expr</div></div>
+<div id="Procedure" draggable="true" style="display: inline-block; border: 1px solid black;" ondragstart="drag(event)"><div style="float: left">ProcName ( </div><div class="contain">Expr</div><div style="float: left"> )</div></div>
+<div id="Return" draggable="true" style="display: inline-block; border: 1px solid black;" ondragstart="drag(event)"><div style="float: left">return </div><div class="contain">Expr</div></div>
+<div id="Times" draggable="true" style="display: inline-block; border: 1px solid black;" ondragstart="drag(event)"><div class="contain">Expr</div><div style="float: left"> * </div><div class="contain">Expr</div></div>
+<div id="ValueConst" draggable="true" style="display: inline-block; border: 1px solid black;" ondragstart="drag(event)"><div class="contain">Constant</div></div>
+<div id="Variable" draggable="true" style="display: inline-block; border: 1px solid black;" ondragstart="drag(event)"><div class="contain">VarName</div></div>
+</div>
+</div>
+<!-- This is the middle container in the page-->
+<div class="col-lg-6 mytextarea"  id="my-textarea" ondrop="dropLines(event)" ondragover="allowDrop(event)">
+</div>
+<div class="col-lg-3">
+    <div class="descripe-text"> Variables Log Container</div>
+    <button onclick="clear();" >clear</button>
+    <button onclick="getdata();">print</button>
+    <p id="print_result"></p>
+</div>
+</div>
+<script type = "text/javascript">
+    /* Functions to assign ID's to dropped building blocks*/
 
-  	
-  	<div class="row down-container">
+    String.prototype.replaceAll = function (find, replace) {
+        var str = this;
+        return str.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replace);
+    };
 
-		<div class="col-lg-3">
-        	<div class="row cluster">
-        		<button class="btn btn-primary active" id="For" onclick="insert('For')" draggable="true" ondragstart="drag(event)">For</button>
-        		<button class="btn btn-primary active" id="While" onclick="insert('While')" draggable="true" ondragstart="drag(event)">While</button>
-        		<button class="btn btn-primary active" id="Next" onclick="insert('Next')" draggable="true" ondragstart="drag(event)">Next</button>
-        		<button class="btn btn-primary active custom" type="submit">Button</button>
-        		<button class="btn btn-primary active custom" type="submit">Button</button>
-        		<button class="btn btn-primary active custom" type="submit">Button</button>
-        		<br><br>
-        		<button class="btn btn-primary active custom" type="submit">DO</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<br><br>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        		<button class="btn btn-primary active" type="submit">Button</button>
-        	</div>
-      	</div>
+    var idCounter = 0;
+    var allIDs = [];
+    function giveID(caller){
+        idCounter++;
+        allIDs.push(caller+'_'+idCounter);
+    console.log(caller+idCounter);
+        return caller + '_' + idCounter;
+    }
+    function assignID(id,str){
+        str = str.toLowerCase();
+        id = id.toLowerCase();
+        //str = str.replaceAll(/id="/+id+/"/gi, ('id="'+ giveID(id)+ '"'));
+        //str = str.split('id="'+id+'"').join('id="'+ giveID(id)+ '"');
+        while (str.search('id="'+id+'"') != -1){
+            len1 = str.length;
+            len = str.substring(0,str.search('id="'+id+'"')).length+('id="'+id+'"').length;
+            str = str.substring(0,str.search('id="'+id+'"')) + ('id="'+ giveID(id)+ '"') + str.substring(len, len1);
+        }
 
-      	<div class="col-lg-6 mytextarea"  id="my-textarea" placeholder="Pseudocode Container" ondrop="drop(event)" ondragover="allowDrop(event)">
-      	</div>
+        console.log(str);
+        return str;
+    }
 
-		<div class="col-lg-3">
-        	<div class="descripe-text"> Variables Log Container</div>
-      	</div>
+    function evaluate(child) {
+        var Parent = child.children[0];
+        var Class = Parent.className;
 
-  	</div>
-        <!-- Drag and drop functions-->
-  <script type = "text/javascript">
+        switch (Class) {
+            case 'plus': result = parseInt(evaluate(Parent.children[0])) + parseInt(evaluate(Parent.children[2]));
+                break;
+            case 'times': result = parseInt(evaluate(Parent.children[0])) * parseInt(evaluate(Parent.children[2]));
+                break;
+            case 'constant': result = Parent.value;
+                break;
+        }
+        return result;
+
+    }
+    /* */
+
+    function test() {
+        var line = document.getElementById("my-textarea").children[0];
+        console.log(line);
+        var print_result = evaluate(line);
+        document.getElementById("print_result").innerHTML = 'result is ' + print_result;
+    }
+
     function allowDrop(ev) {
         ev.preventDefault();
     }
@@ -97,68 +132,110 @@
         event.dataTransfer.setData("text", event.target.id);
     }
 
+    var LineId = 1;
+
+    function dropLines(ev) {
+        ev.preventDefault();
+
+        var test = ev.target.tagName;
+        if (test == "LI"){
+            var id = ev.dataTransfer.getData("text");
+            var str = '<li>' + insert(id) + '</li>';
+            str = assignID(id, str);
+            var child = document.createElement('div');
+            child.innerHTML = str;
+            child = child.firstChild;
+
+            ev.target.parentNode.appendChild(child);
+            ev.stopPropagation();
+            saveData(id);
+
+            LineId += 1;
+            return false;
+        }
+        else{
+            var id = ev.dataTransfer.getData("text");
+            var str = '<li>' + insert(id) + '</li>';
+            str = assignID(id, str);
+            var child = document.createElement('div');
+            child.innerHTML = str;
+            child = child.firstChild;
+
+            ev.target.appendChild(child);
+            ev.stopPropagation();
+            saveData(id);
+
+            LineId += 1;
+            return false;
+        }
+    }
+
     function drop(ev) {
         ev.preventDefault();
 
-        var str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;"><div class="plus" id="plus1" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
-                  '<div style="float: left"> + </div><div class="plus" id="plus2" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>'
-
-        var child = document.createElement('div');
-        child.innerHTML = str;
-        child = child.firstChild;
-
-        var data = ev.dataTransfer.getData("text");
-        var txtOutput = document.getElementById("my-textarea");
-        txtOutput.value += "Hi there, " + data + "!" + "\n"
-        ev.target.appendChild(child);
-        ev.stopPropagation();
-        return false;
-    }
-
-    // from textBoxes.html
-    function insert(name){
-        //var para = document.createElement("DIV");                       // Create a <p> node
-        //var t = document.createTextNode("Insert");      // Create a text node
-        //para.appendChild(t);                                          // Append the text to <p>
-        //document.getElementById("myDIV").appendChild(para);
-        var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
-                  '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
-
-        var child = document.createElement('div');
-        child.innerHTML = str;
-        child = child.firstChild;
-        document.getElementById('my-textarea').appendChild(child);
-    } // end sayHi
-
-    var allIDs = [];
-    function giveID(caller){
-        var ids = [];
-        var counter = 0;
-        if (ids.indexOf(caller) == -1) {
-            ids.push(caller);
-            counter++;
-            allIDs.push(caller+counter);
-            return caller + counter;
+        if (ev.target.hasChildNodes()){
+            ev.stopPropagation();
         }
-            /*if (id[i] === caller) {
-                counter++;
-                return caller + counter;
-            }
-            i++;
-            */
-         else {
-                counter++;
-                allIDs.push(caller+counter);
-                return caller + counter;
-            }
-    }
-    // hvorfor vil det ikke push'e
-    /*  var str = '<div class="procedure"> <input type="text" classe="procname"/>' +
-              '<div class="container" ondrop="function(event){handleDrop(event,42);}"></div>'
-    */
-    </script>
 
-  </div>
+        else{
+            var id = ev.dataTransfer.getData("text");
+            console.log(id);
+            var str = insert(id);
+            str = assignID(id, str);
+            var child = document.createElement('div');
+            child.innerHTML = str;
+            child = child.firstChild;
+
+            ev.target.appendChild(child);
+            ev.stopPropagation();
+            saveData(id);
+            return false;
+        }
+    }
+
+    var i = 1;
+    function saveData(id) {
+        //var obj = [];
+
+        obj = {i, id};
+        localStorage.setItem('myStorage', JSON.stringify(obj));
+        //i += 1;
+    }
+    function getdata() {
+        var data = JSON.parse(localStorage.getItem('myStorage'));
+        //document.getElementById("result").innerHTML = "key is "+data.i;
+        document.getElementById("result").innerHTML = "key is"+data.i+"<br>value is "+data.id;
+
+
+    //    var data = JSON.parse(localStorage.getItem('myStorage'));
+    //    document.getElementById("result").innerHTML = data;
+    }
+    function clear() {
+        localStorage.clear();
+        document.getElementById("result").innerHTML = "you have cleared data"+"<br>";
+    }
+
+function insert(id){
+ switch (id) {
+case 'Divide': str = '<div class = divide style="display: inline-block; min-width: 20px; max-height: 50px;"><div class="contain" id="divide" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div style="float: left"> / </div><div class="contain" id="divide" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>';
+ break;
+case 'Floor': str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;"><div style="float: left">|_ </div><div class="contain" id="floor" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div style="float: left"> _|</div></div>';
+ break;
+case 'Plus': str = '<div class = plus style="display: inline-block; min-width: 20px; max-height: 50px;"><div class="contain" id="plus" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div style="float: left"> + </div><div class="contain" id="plus" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>';
+ break;
+case 'Procedure': str = '<div class = pluscontainer style="display: inline-block; min-width: 20px;"><div class = procedure style="display:inline-block";><input type="text" class="procname" style="float: left"><div style="float: left">( </div><div class="contain" id="procedure" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div style="float: left"> )</div></div><br><div class="lines" id="procedure" ondrop="dropLines(event)" ondragover="allowDrop(event)"></div></div>';
+ break;
+case 'Return': str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;"><div style="float: left">return </div><div class="contain" id="return" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>';
+ break;
+case 'Times': str = '<div class = times style="display: inline-block; min-width: 20px; max-height: 50px;"><div class="contain" id="times" ondrop="drop(event)" ondragover="allowDrop(event)"></div><div style="float: left"> * </div><div class="contain" id="times" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>';
+ break;
+case 'ValueConst': str = '<input type="number" class="constant" id="valueconst" style="width: 50px"/>';
+ break;
+case 'Variable': str = '<input type="text" class="varname" id="variable" style="width: 50px"/>';
+ break;
+}
+ return str;
+}</script>  </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -168,8 +245,5 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="staticMedia/js/ie10-viewport-bug-workaround.js"></script>
     <script type="text/javascript" src="staticMedia/js/config.js"></script>
-
-
-  </body>
+</body>
 </html>
-

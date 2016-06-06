@@ -15,3 +15,6 @@ class BuildBlock:
                  '<div style="float: left"> _|</div>' \
                  '</div>'
         return Screen
+
+    def Add_Evaluation():
+        return ''

@@ -18,3 +18,6 @@ class BuildBlock:
                  '<div class="lines" id="procedure" ondrop="dropLines(event)" ondragover="allowDrop(event)"></div>' \
                  '</div>'
         return Screen
+
+    def Add_Evaluation():
+        return ''

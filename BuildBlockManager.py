@@ -16,6 +16,7 @@ class BbManager:
     def start(filepath):
         BuildBlockButton = ""
         AllCase = ""
+        Evaluation = ""
         if os.path.exists(filepath):#Options.root_blocks + filepath):
             files = os.listdir(filepath)#Options.root_blocks + filepath)
             for sysfile in files:
@@ -30,12 +31,15 @@ class BbManager:
                     BuildBlockButton += Button
                     Screen = "case '" + id + "': str = '" + sy.BuildBlock.show_in_screen() + "';\n break;\n"
                     AllCase += Screen
-
+                    Evaluation += sy.BuildBlock.Add_Evaluation()
         else:
             print("ELSE")
 
-        BuildBlockScreen = 'function insert(id){\n switch (id) {\n' + AllCase + '}\n return str;\n}'
-        return BuildBlockButton, BuildBlockScreen
+        BuildBlockScreen = 'function insert(id){\n switch (id) {\n' + AllCase + '}\n return str;\n}\n\n'
+        Evaluation_Function = 'function evaluate(child) {\n var Parent = child.children[0];\n ' \
+                              'var Class = Parent.className;\n switch (Class) {\n' + Evaluation + '}\n return result;\n}\n\n'
+
+        return BuildBlockButton, BuildBlockScreen, Evaluation_Function
 #if __name__ == '__main__':
 #    manager = BbManager()
 #    ls = manager.start("assignments/uge1/")
