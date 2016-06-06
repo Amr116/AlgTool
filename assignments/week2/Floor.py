@@ -9,7 +9,7 @@ class BuildBlock:
         return Button
 
     def show_in_screen():
-        Screen = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;">' \
+        Screen = '<div class = floor style="display: inline-block; min-width: 20px; max-height: 50px;">' \
                  '<div style="float: left">|_ </div>' \
                  '<div class="contain" id="floor" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' \
                  '<div style="float: left"> _|</div>' \
@@ -17,4 +17,5 @@ class BuildBlock:
         return Screen
 
     def Add_Evaluation():
-        return ''
+        Evaluation = "case 'floor': result = Math.floor(evaluate(Parent.children[1]));\n break;"
+        return Evaluation
