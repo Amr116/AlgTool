@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AlgoTools</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="staticMedia/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="staticMedia/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="staticMedia/css/cover.css" rel="stylesheet">
+    <link href="staticMedia/css/amr.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="staticMedia/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<style>
+    .contain {
+        float: left;
+        display: inline-block;
+        min-width: 20px;
+        min-height: 20px;
+        border: 1px solid black;
+    }
+</style>
+  <body>
+
+  <div class="container-fluid">
+
+	<div class="row topbar">
+		<div class="col-lg-12">
+		</div> 
+	</div>
+      <button class="btn btn-primary active" type="submit">Button</button>
+      <button class="btn btn-primary active" type="submit">Button</button>
+      <button class="btn btn-primary active" type="submit">Button</button>
+      <button class="btn btn-primary active" type="submit">Button</button>
+      <button class="btn btn-primary active" type="submit">Button</button>
+      <button class="btn btn-primary active" type="submit">Button</button>
+      <button class="btn btn-primary active" type="submit">Button</button>
+      <button class="btn btn-primary active" type="submit">Button</button>
+      <button class="btn btn-primary active" type="submit">Button</button>
+      <button class="btn btn-primary active" type="submit">Button</button>
+      <button class="btn btn-primary active" type="submit">Button</button>
+      <button class="btn btn-primary active" type="submit">Button</button>
+        		
+  	
+  	<div class="row down-container">
+
+		<div class="col-lg-3">
+        	<div class="row cluster">
+<<<<<<< HEAD
+        		<div id="For" draggable="true" style="border: solid black;" ondragstart="drag(event)">plus</div>
+                <div id="And" draggable="true" style="border: solid black;" ondragstart="drag(event)">and</div>
+=======
+        		<div id="plus" draggable="true" style="border: solid black;" ondragstart="drag(event)">plus</div>
+>>>>>>> origin/master
+        	</div>
+      	</div>
+
+      	<div class="col-lg-6 mytextarea"  id="my-textarea" placeholder="Pseudocode Container" ondrop="dropLines(event)" ondragover="allowDrop(event)">
+      	</div>
+
+		<div class="col-lg-3">
+        	<div class="descripe-text"> Variables Log Container</div>
+      	</div>
+
+  	</div>
+        <!-- Drag and drop functions-->
+
+
+<script type = "text/javascript">
+    String.prototype.replaceAll = function (find, replace) {
+        var str = this;
+        return str.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replace);
+    };
+    function insertPlus(){
+        var str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;"><div class="plus" id="" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+                '<div style="float: left"> + </div><div class="plus" id="" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>'
+
+        str = str.replaceAll('id=""', ('id="'+ giveID("plus")+ '"'));
+        console.log(str);
+        return str;
+    }
+    var idCounter = 0;
+    var allIDs = [];
+    function giveID(caller){
+        idCounter++;
+        allIDs.push(caller+idCounter);
+        return caller + idCounter;
+    }
+
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(event) {
+        event.dataTransfer.setData("text", event.target.id);
+    }
+
+function dropLines(ev) {
+    ev.preventDefault();
+
+    var id = ev.dataTransfer.getData("text");
+    var str = '<li>' + insert(id) + '</li>';
+    var child = document.createElement('div');
+    child.innerHTML = str;
+    child = child.firstChild;
+
+    ev.target.appendChild(child);
+    ev.stopPropagation();
+    return false;
+}
+    function drop(ev) {
+        ev.preventDefault();
+
+
+        var id = ev.dataTransfer.getData("text");
+        var str = insert(id);
+
+        //var str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;"><div class="plus" id="plus1" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+        //        '<div style="float: left"> + </div><div class="plus" id="plus2" style="float: left; display: inline-block; min-width: 20px; min-height: 20px; border: 1px solid black;" ondrop="drop(event)" ondragover="allowDrop(event)"></div></div>'
+
+        var callerId = ev.dataTransfer.getData("text");
+        console.log(callerId);
+        var str;
+        switch (callerId){
+            case "plus": str  = insertPlus();
+                break;
+            console.log(str);
+        }
+
+        var child = document.createElement('div');
+        child.innerHTML = str;
+        child = child.firstChild;
+        console.log(str);
+        ev.target.appendChild(child);
+        ev.stopPropagation();
+        return false;
+    }
+    // from textBoxes.html
+    function insert(id){
+        switch (id) {
+            case "For":
+                str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;">' +
+                        '<div class="contain" id="plus1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+                        '<div style="float: left"> + </div>' +
+                        '<div class="contain" id="plus1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+                        '</div>';
+                break;
+            case 'And':
+                str = '<div class = pluscontainer style="display: inline-block; min-width: 20px; max-height: 50px;">' +
+                        '<div class="contain" id="plus1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+                        '<div style="float: left"> + </div>' +
+                        '<div class="contain" id="plus1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' +
+                        '</div>';
+                break;
+        }
+        return str;
+    }
+
+
+</script>
+
+  </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="staticMedia/js/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="staticMedia/js/jquery.min.js"><\/script>')</script>
+    <script src="staticMedia/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="staticMedia/js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="staticMedia/js/config.js"></script>
+
+
+  </body>
+</html>
+
