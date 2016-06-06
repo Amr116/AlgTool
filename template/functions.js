@@ -128,3 +128,12 @@
         localStorage.clear();
         document.getElementById("result").innerHTML = "you have cleared data";
     }
+
+    function readLine() {
+        var line = document.getElementById("my-textarea").children[0];
+        console.log(line);
+        var print_result = evaluate(line);
+        document.getElementById("print_result").innerHTML = 'result is ' + print_result;
+    }
+    
+    

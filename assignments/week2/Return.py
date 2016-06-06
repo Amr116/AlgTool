@@ -13,3 +13,6 @@ class BuildBlock:
                  '<div class="contain" id="return" ondrop="drop(event)" ondragover="allowDrop(event)"></div>' \
                  '</div>'
         return Screen
+
+    def Add_Evaluation():
+        return ''

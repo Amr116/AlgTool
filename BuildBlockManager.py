@@ -15,7 +15,8 @@ class BbManager:
     """
     def start(filepath):
         BuildBlockButton = ""
-        BuildBlockScreen = ""
+        AllCase = ""
+        Evaluation = ""
         if os.path.exists(filepath):#Options.root_blocks + filepath):
             files = os.listdir(filepath)#Options.root_blocks + filepath)
             for sysfile in files:
@@ -28,14 +29,17 @@ class BbManager:
                     Button = '<div id="' + id + '" draggable="true" style="display: inline-block; border: 1px solid black;" ondragstart="drag(event)">' + \
                            sy.BuildBlock.show_in_menu() + "</div>\n"
                     BuildBlockButton += Button
-                    Screen = "case '" + id + "': str = '" + \
-                           sy.BuildBlock.show_in_screen() + "';\n break;\n"
-                    BuildBlockScreen += Screen
-
+                    Screen = "case '" + id + "': str = '" + sy.BuildBlock.show_in_screen() + "';\n break;\n"
+                    AllCase += Screen
+                    Evaluation += sy.BuildBlock.Add_Evaluation()
         else:
             print("ELSE")
 
-        return BuildBlockButton, BuildBlockScreen
+        BuildBlockScreen = 'function insert(id){\n switch (id) {\n' + AllCase + '}\n return str;\n}\n\n'
+        Evaluation_Function = 'function evaluate(child) {\n var Parent = child.children[0];\n ' \
+                              'var Class = Parent.className;\n switch (Class) {\n' + Evaluation + '}\n return result;\n}\n\n'
+
+        return BuildBlockButton, BuildBlockScreen, Evaluation_Function
 #if __name__ == '__main__':
 #    manager = BbManager()
 #    ls = manager.start("assignments/uge1/")

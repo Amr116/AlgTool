@@ -44,7 +44,7 @@ class HttpGet(HttpRequest):
 
 
         elif (filename is "" or filename == "index.html") and (os.path.isdir(filepath[1:])):
-            (BuildBlockButton, BuildBlockScreen) = BbManager.start(filepath[1:])
+            (BuildBlockButton, BuildBlockScreen, Evaluation_Function) = BbManager.start(filepath[1:])
 
             with open(Options.root_dir + "/template/header.html", 'r') as fhandle:
                 Header = '<!DOCTYPE html>\n<html lang="en">\n' + fhandle.read()
@@ -61,12 +61,9 @@ class HttpGet(HttpRequest):
             with open(Options.root_dir + "/template/logcontainer.html", 'r') as fhandle:
                 LogContainer = fhandle.read() + '</div>\n'
 
-            ShowBBInScreen = 'function insert(id){\n switch (id) {\n' + \
-                             BuildBlockScreen + '}\n return str;\n}'
-
             with open(Options.root_dir + "/template/functions.js", 'r') as fhandle:
                 Functions = '<script type = "text/javascript">\n' + \
-                            fhandle.read() + ShowBBInScreen + \
+                            fhandle.read() + BuildBlockScreen + Evaluation_Function + \
                             '</script>'
 
             with open(Options.root_dir + "/template/tail.html", 'r') as fhandle:
