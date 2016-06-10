@@ -27,6 +27,7 @@ class HttpGet(HttpRequest):
                 Content-Type: text/html
                 Content-Length: """ + str(len(f)) + """
                 \n\n""" + f + """\r\n""").encode())
+             csock.close()
              """
              if Filesystem.file_exists(filepath, filename):
                 # here i will server home page with list dir for all the
