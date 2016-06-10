@@ -33,7 +33,7 @@ class HttpRequest:
         for j in data_list:
             serve_data += "<a class='btn btn-success week' href='/"+str(j)+"/'><div>"+str(j.replace("/","-"))+"</div></a> "
  
-        fh_top = open("top_index.html", "r").read()
-        fh_btm = open("bottom_index.html", "r").read()
+        fh_top = open("template/top_index.html", "r").read()
+        fh_btm = open("template/bottom_index.html", "r").read()
         fh     = fh_top + serve_data +fh_btm
         return fh
