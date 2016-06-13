@@ -14,15 +14,10 @@ class HttpRequest:
         else:
             Response.reply_404(csock)
 
-    def serve_media(self, filepath, filename, csock):
-        exists = Filesystem.file_exists(filepath, filename)
-        if exists:
-            with open(Options.root_dir + filepath + filename, 'r') as fhandle:
-                Response.reply_200(csock, fhandle.read())
-        else:
-            Response.reply_404(csock)
+    def serve_media(self, content, csock):
+        Response.reply_200(csock, content)
 
-    def serve_index(self):
+    def serve_index(self, csock):
         fd = "assignments"
         data = os.listdir(fd)
         data_list = []
@@ -36,4 +31,6 @@ class HttpRequest:
         fh_top = open("template/top_index.html", "r").read()
         fh_btm = open("template/bottom_index.html", "r").read()
         fh     = fh_top + serve_data +fh_btm
-        return fh
+
+        Response.reply_200(csock, fh)
+        #return fh
