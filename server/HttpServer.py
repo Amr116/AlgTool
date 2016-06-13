@@ -7,6 +7,10 @@ from protocol.HttpGet import HttpGet
 
 CRLF = '\r\n'
 class HttpServer:
+    """ This class is responsible to make connection with client side
+        by  create ServerSocket object to listen on a specific port
+        and handle GET requests.
+    """
     host = None
     port = None
     sock = None
@@ -19,6 +23,9 @@ class HttpServer:
         self.sock.listen(1)
 
     def start_server(self):
+        """ waits until a client starts up and requests a connection on the host and port of this server
+            accept client request and call handle_request method
+        """
         while True:
             # csock is the client request object
             # caddr is a tuple of the client HOST and PORT
@@ -26,6 +33,8 @@ class HttpServer:
             self.handle_request(csock)
 
     def handle_request(self, csock):
+        """ recived Client request with size 8192 bytes
+        """
         request = csock.recv(8192).decode()  # returns request headers. (no more than 8kb)
         f = urlparse(request)
 
@@ -37,6 +46,7 @@ class HttpServer:
             method = fl_split[0]
             uri = fl_split[1]
             protocol = fl_split[2]
+
             if method == "GET":
                 HttpGet(uri, csock)
             """
