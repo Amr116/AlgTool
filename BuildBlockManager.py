@@ -4,16 +4,7 @@ import sys
 from Options import Options
 class BbManager:
 
-    """
-    def Validation(filepath)
-        if os.path.exists(Options.root_blocks +filepath ):
-            files = os.listdir(Options.root_blocks + filepath)
-            return files
-        else:
-            # if the path does not exists then we return index.html file as front page
-            return Options.root_dir + "/index.html"
-    """
-    def start(filepath):
+   def start(filepath):
         BuildBlockButton = ""
         AllCase = ""
         Evaluation = ""
@@ -40,7 +31,4 @@ class BbManager:
                               'var Class = Parent.className;\n switch (Class) {\n' + Evaluation + '}\n return result;\n}\n\n'
 
         return BuildBlockButton, BuildBlockScreen, Evaluation_Function
-#if __name__ == '__main__':
-#    manager = BbManager()
-#    ls = manager.start("assignments/uge1/")
-#    print("=============" + ls)
+
