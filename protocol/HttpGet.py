@@ -1,7 +1,7 @@
 import os
 
 from Options import Options
-from filesystem.Filesystem import Filesystem
+from response.Response import Response
 from protocol.HttpRequest import HttpRequest
 from BuildBlockManager import BbManager
 
@@ -10,7 +10,7 @@ class HttpGet(HttpRequest):
     def __init__(self, match, csock):
 
         filename = match.split("/")[-1]
-        if filename.endswith(".html") or filename.endswith(".js") or filename.endswith(".css"):
+        if filename.endswith(".html") or filename.endswith(".js") or filename.endswith(".css") or filename.endswith(".png"):
             filename = filename
         else:
             filename = ""
@@ -22,25 +22,13 @@ class HttpGet(HttpRequest):
         if (((filename == "index.html") or (filename == "")) and (filepath == "") or (filepath == "/")):
              filename = "index.html"
              filepath = "/"
-             f = self.serve_index()
-             csock.sendall(("""HTTP/1.1 200 OK
-                Content-Type: text/html
-                Content-Length: """ + str(len(f)) + """
-                \n\n""" + f + """\r\n""").encode())
-             csock.close()
-             """
-             if Filesystem.file_exists(filepath, filename):
-                # here i will server home page with list dir for all the
-                createIndex() 
-                self.serve_file(filepath, filename, csock)
-            """
-
+             self.serve_index(csock)
         elif (filename.endswith(".css")):
-            #filepath = "staticMedia/css/"
             self.serve_file(filepath, filename, csock)
 
         elif ( filename.endswith(".js")):
-            #filepath = "staticMedia/js/"
+            self.serve_file(filepath, filename, csock)
+        elif ( filename.endswith(".png")):
             self.serve_file(filepath, filename, csock)
 
 
@@ -71,20 +59,7 @@ class HttpGet(HttpRequest):
                 Tail = fhandle.read() + '</body>\n</html>'
 
             CompletePage = Header + topbar + ButtonMenu + AlgorithmScreen + LogContainer + Functions + Tail
-            csock.sendall(("""HTTP/1.1 200 OK
-                Content-Type: text/html
-                Content-Length: """ + str(len(CompletePage)) + """
-                \n\n""" + CompletePage + """\r\n""").encode())
-
-
+            self.serve_media(CompletePage, csock)
         else:
-             f = self.serve_index()
-             csock.sendall(("""HTTP/1.1 200 OK
-                Content-Type: text/html
-                Content-Length: """ + str(len(f)) + """
-                \n\n""" + f + """\r\n""").encode())
-            
-            #filename = "index.html"
-            #filepath = "/"
-            #self.serve_file(filepath, filename, csock)
-            
+             self.serve_index(csock)
+
